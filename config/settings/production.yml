@@ -1,0 +1,6 @@
+mailgun:
+  password: replaced
+
+exception_notification:
+  email_config:
+    email_prefix: "[GIndexerApp Production]"
