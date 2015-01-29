@@ -1,0 +1,28 @@
+.main-filter.panel.panel-primary
+  .panel-heading
+    .title Enter new domain
+  .panel-body
+    = form_for @domain, role: :form, class: :row do |f|
+      .form-group.col-xs-6
+        = f.text_field :url, class: 'form-control', placeholder: 'Domain url'
+
+      .form-group.col-xs-3
+        %label.checkbox-inline
+          = f.check_box :indexed
+          Already indexed?
+
+      .form-group.col-xs-3
+        = f.submit 'Create', class: 'btn btn-info pull-right'
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Url
+      %th Indexed?
+      %th Checked At
+  %tbody
+    - @domains.each do |domain|
+      %tr
+        %td= link_to domain.url, domain.url
+        %td= domain.indexed ? 'Y' : 'N'
+        %td= domain.checked_at

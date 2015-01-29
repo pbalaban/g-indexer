@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'application#index'
+  resources :domains, only: [:index, :create]
+
+  root 'domains#index'
 end
