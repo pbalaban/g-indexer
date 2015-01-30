@@ -18,6 +18,8 @@ gem 'rails-assets-bootstrap'
 gem 'rails_config'
 gem 'exception_notification'
 gem 'mailgun_rails'
+gem 'resque'
+gem 'resque-scheduler'
 
 group :production, :staging do
   gem 'unicorn'
@@ -34,6 +36,8 @@ group :development do
 
   gem 'guard-rails', require: false
   gem 'guard-bundler', require: false
+  gem 'guard-resque', require: false, github: 'railsjedi/guard-resque'
+  gem 'guard-resque-scheduler', require: false, github: 'tbprojects/guard-resque-scheduler'
 
   gem 'spring-commands-rspec'
 end
@@ -41,6 +45,7 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
+  gem 'pry-doc'
 
   gem 'byebug'
   gem 'web-console', '~> 2.0'

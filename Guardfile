@@ -36,3 +36,12 @@ guard 'rails', server: 'unicorn' do
   watch('Gemfile.lock')
   watch(%r{^(config|lib)/.*})
 end
+
+guard 'resque', environment: 'development' do
+  watch(%r{^app/jobs(.+)\.rb$})
+  watch(%r{^lib/(.+)\.rb$})
+end
+
+guard 'resque-scheduler', environment: 'development' do
+  watch('config/schedule.yml')
+end
