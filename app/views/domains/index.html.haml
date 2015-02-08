@@ -3,6 +3,11 @@
     .title Enter new domain
   .panel-body
     = form_for @domain, role: :form, class: :row do |f|
+      .well.weel-sm.errors-container{ class: (:hidden unless @domain.errors.any?) }
+        %h4 Fix errors before procceed!
+        %ul
+          - @domain.errors.full_messages.each do |message|
+            %li= message
       .form-group.col-xs-6
         = f.text_field :url, class: 'form-control', placeholder: 'Domain url'
 
