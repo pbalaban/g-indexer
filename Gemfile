@@ -23,6 +23,8 @@ gem 'sinatra', '>= 1.3.0', require: nil ## Sidekiq monitor use sinatra
 gem 'validate_url'
 gem 'PageRankr'
 
+gem 'whenever', require: false
+
 group :production, :staging do
   gem 'unicorn'
 end
