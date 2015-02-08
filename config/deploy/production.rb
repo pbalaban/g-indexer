@@ -8,3 +8,4 @@ server '54.191.19.139',
   }
 
 set :linked_files, fetch(:linked_files, []).push('config/settings/production.yml')
+set :sidekiq_default_hooks, -> { true }
