@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20150129205724) do
   create_table "domains", force: :cascade do |t|
     t.string   "url"
     t.boolean  "indexed",    default: false, null: false
+    t.integer  "g_index",    default: 0,     null: false
     t.datetime "checked_at"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

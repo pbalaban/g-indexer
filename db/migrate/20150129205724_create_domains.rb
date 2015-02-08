@@ -3,6 +3,7 @@ class CreateDomains < ActiveRecord::Migration
     create_table :domains do |t|
       t.string   :url
       t.boolean  :indexed, default: false, null: false
+      t.integer  :g_index, default: 0, null: false
       t.datetime :checked_at
 
       t.timestamps null: false

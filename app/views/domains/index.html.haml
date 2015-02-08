@@ -25,9 +25,11 @@
       %th Url
       %th Indexed?
       %th Checked At
+      %th Google indexes
   %tbody
     - @domains.each do |domain|
       %tr
         %td= link_to domain.url, domain.url
         %td= domain.indexed ? 'Y' : 'N'
         %td= domain.checked_at
+        %td= domain.g_index
