@@ -28,6 +28,11 @@ watch ("Guardfile") do
   exit 0
 end
 
+guard 'sidekiq', environment: 'development', config: 'config/sidekiq.yml', concurrency: 5, verbose: false do
+  watch(%r{^app/jobs/(.+)\.rb$})
+  watch(%r{^(config|lib)/.*})
+end
+
 guard :bundler do
   watch('Gemfile')
 end

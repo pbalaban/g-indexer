@@ -18,6 +18,8 @@ gem 'rails-assets-bootstrap'
 gem 'rails_config'
 gem 'exception_notification'
 gem 'mailgun_rails'
+gem 'sidekiq', '~> 3.0'
+gem 'sinatra', '>= 1.3.0', require: nil ## Sidekiq monitor use sinatra
 
 group :production, :staging do
   gem 'unicorn'
@@ -31,7 +33,9 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano3-unicorn'
+  gem 'capistrano-sidekiq'
 
+  gem 'guard-sidekiq', require: false
   gem 'guard-rails', require: false
   gem 'guard-bundler', require: false
 
