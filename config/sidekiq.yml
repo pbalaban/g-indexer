@@ -2,6 +2,7 @@
 :pidfile: tmp/pids/sidekiq.pid
 :concurrency: 3
 :queues:
+  - [mailers, 9]
   - [often, 7]
   - [default, 5]
   - [seldom, 3]

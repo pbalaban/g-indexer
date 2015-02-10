@@ -20,3 +20,8 @@ mailgun:
   domain: app32547894.mailgun.org
   user_name: postmaster@app32547894.mailgun.org
   password: replace_me
+
+mailer:
+  mail_to:
+    - balaban.petr@gmail.com
+    - alan@intencemedia.com
