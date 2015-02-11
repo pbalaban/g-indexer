@@ -20,8 +20,12 @@ class Domain < ActiveRecord::Base
 
   private
   def send_notification
-    became_active = self.g_index_was <= MIN_INDEXED_THRESHOLD && self.g_index > MIN_INDEXED_THRESHOLD
+    if self.g_index_was <= MIN_INDEXED_THRESHOLD && self.g_index > MIN_INDEXED_THRESHOLD
+      DomainMailer.index_enabled(self.id).deliver_later
+    end
 
-    DomainMailer.index_changed(self.id).deliver_later if became_active
+    if self.g_index_was > MIN_INDEXED_THRESHOLD && self.g_index <= MIN_INDEXED_THRESHOLD
+      DomainMailer.index_disabled(self.id).deliver_later
+    end
   end
 end
