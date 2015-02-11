@@ -25,3 +25,6 @@ mailer:
   mail_to:
     - balaban.petr@gmail.com
     - alan@intencemedia.com
+
+basic_auth:
+  enabled: false
