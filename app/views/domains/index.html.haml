@@ -21,6 +21,7 @@
       %th Checked At
       %th Google Indexed?
       %th Google indexes count
+      %th
   %tbody
     - @domains.each do |domain|
       %tr
@@ -30,3 +31,6 @@
             = domain.checked_at.in_time_zone('Pacific Time (US & Canada)').strftime('%b %d, %I:%M %p %Z')
         %td= domain.g_indexed? ? 'Y' : 'N'
         %td= domain.g_index
+        %td
+          = link_to domain_path(domain), method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.glyphicon.glyphicon-trash

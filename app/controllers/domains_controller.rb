@@ -16,6 +16,13 @@ class DomainsController < ApplicationController
     end
   end
 
+  def destroy
+    @domain = Domain.find(params[:id])
+    @domain.destroy
+
+    redirect_to root_path
+  end
+
   private
   def domain_params
     params.require(:domain).permit(:url, :indexed)
