@@ -1,5 +1,5 @@
 set :output, "#{path}/log/cron.log"
 
-every 8.hours do
-  rake 'cron:every_8_hours'
+every 4.hours do
+  rake 'cron:every_4_hours'
 end

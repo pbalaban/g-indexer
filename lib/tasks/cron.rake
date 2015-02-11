@@ -1,9 +1,8 @@
 namespace :cron do
-  desc 'Start task at 7:00PM, 3:00AM, 11:00AM in EST'
-  task every_8_hours: :environment do
-    #next 8.hours - 60.minutes
-    max_seconds   = 28800 - 3600
-    start_seconds = 1800
+  desc 'Task which executed every 4 hours'
+  task every_4_hours: :environment do
+    max_seconds   = (4.hours - 30.minutes).to_i
+    start_seconds = 30.minutes.to_i
     seconds_step  = max_seconds/Domain.count
 
     Domain.all.each.with_index do |domain, index|
