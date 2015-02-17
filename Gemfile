@@ -21,6 +21,7 @@ gem 'mailgun_rails'
 gem 'sidekiq', '~> 3.0'
 gem 'sinatra', '>= 1.3.0', require: nil ## Sidekiq monitor use sinatra
 gem 'validate_url'
+gem 'email_validator', require: 'email_validator/strict'
 gem 'PageRankr'
 
 gem 'whenever', require: false
