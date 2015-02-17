@@ -4,7 +4,7 @@
   .panel-body
     = form_for @domain, role: :form, class: :row do |f|
       .well.weel-sm.errors-container{ class: (:hidden unless @domain.errors.any?) }
-        %h4 Fix errors before procceed!
+        %h4 Fix errors before proceed!
         %ul
           - @domain.errors.full_messages.each do |message|
             %li= message
