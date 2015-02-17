@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
   resources :domains, only: [:index, :create, :destroy]
+  resources :email_addresses, only: [:index, :create, :destroy]
 
   root 'domains#index'
 end
