@@ -1,11 +1,10 @@
-server '54.191.19.139',
-  user: 'ubuntu',
+server '107.170.205.136',
+  user: 'deploy',
   roles: %w{web app db},
   ssh_options: {
-    keys: %w(~/.ssh/aws-pbalaban.pem),
+    keys: %w(~/.ssh/id_rsa),
     forward_agent: true,
     auth_methods: %w(publickey)
   }
 
 set :linked_files, fetch(:linked_files, []).push('config/settings/production.yml')
-set :sidekiq_default_hooks, -> { true }
