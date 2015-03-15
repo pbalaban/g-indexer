@@ -13,7 +13,5 @@ set :linked_dirs, fetch(:linked_dirs, []).push(*EXTRA_LINKED_DIRS)
 
 set :bundle_binstubs, nil
 
-set :sidekiq_default_hooks, -> { false }
-
 after 'deploy:publishing', 'unicorn:legacy_restart'
 after 'deploy:finished', 'unicorn:restart'
