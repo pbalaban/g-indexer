@@ -8,21 +8,33 @@
         %ul
           - @email_address.errors.full_messages.each do |message|
             %li= message
-      .form-group.col-xs-6
-        = f.text_field :email, class: 'form-control', placeholder: 'Email address'
-
       .form-group.col-xs-3
+        = f.text_field :email, class: 'form-control', placeholder: 'Email address'
+      .form-group.col-xs-3
+        = f.label :send_google_index_change, 'Send Google index changes'
+        = f.check_box :send_google_index_change, placeholder: 'Send Google index changes'
+      .form-group.col-xs-3
+        = f.label :send_backlink_change, 'Send backlinks change'
+        = f.check_box :send_backlink_change, placeholder: 'Send backlinks change'
+
+      .form-group.col-xs-2
         = f.submit 'Create', class: 'btn btn-info pull-right'
 
 %table.table.table-striped
   %thead
     %tr
       %th Email
+      %th Send Google index changes
+      %th Send backlinks change
       %th
   %tbody
     - @email_addresses.each do |email_address|
       %tr
         %td= email_address.email
+        %td
+          %i.glyphicon{ class: email_address.send_google_index_change ? :'glyphicon-ok' : :'glyphicon-remove' }
+        %td
+          %i.glyphicon{ class: email_address.send_backlink_change ? :'glyphicon-ok' : :'glyphicon-remove' }
         %td
           = link_to email_address, method: :delete, data: { confirm: 'Are you sure?' } do
             %i.glyphicon.glyphicon-trash

@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(version: 20150217152558) do
 
   create_table "email_addresses", force: :cascade do |t|
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.boolean  "send_google_index_change", default: true, null: false
+    t.boolean  "send_backlink_change",     default: true, null: false
   end
 
 end

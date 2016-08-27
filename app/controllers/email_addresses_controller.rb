@@ -25,7 +25,9 @@ class EmailAddressesController < ApplicationController
 
   private
   def email_address_params
-    params.require(:email_address).permit(:email)
+    params.require(:email_address).permit(
+      :email, :send_backlink_change, :send_google_index_change
+    )
   end
 
   def find_email_addresss
