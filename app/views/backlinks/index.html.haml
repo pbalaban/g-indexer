@@ -1,0 +1,37 @@
+.main-filter.panel.panel-primary
+  .panel-heading
+    .title Enter new backlink
+  .panel-body
+    = form_for @backlink, role: :form, class: :row do |f|
+      .well.weel-sm.errors-container{ class: (:hidden unless @backlink.errors.any?) }
+        %h4 Fix errors before proceed!
+        %ul
+          - @backlink.errors.full_messages.each do |message|
+            %li= message
+      .form-group.col-xs-5
+        = f.text_field :referrer_page, class: 'form-control', placeholder: 'Page where backlink live'
+      .form-group.col-xs-5
+        = f.text_field :referent_domain, class: 'form-control', placeholder: 'Backlink domain'
+
+      .form-group.col-xs-2
+        = f.submit 'Create', class: 'btn btn-info pull-right'
+
+%table.table.table-striped.backlinks
+  %thead
+    %tr
+      %th Website URL
+      %th Backlink domain
+      %th Checked At
+      %th Active?
+      %th
+  %tbody
+    - @backlinks.each do |backlink|
+      %tr
+        %td= link_to backlink.referrer_page, backlink.referrer_page
+        %td= backlink.referent_domain
+        %td= backlink.formatted_checked_at
+        %td
+          %i.glyphicon{ class: backlink.active? ? :'glyphicon-ok' : :'glyphicon-remove' }
+        %td
+          = link_to backlink_path(backlink), method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.glyphicon.glyphicon-trash

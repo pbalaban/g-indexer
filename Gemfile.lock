@@ -310,6 +310,7 @@ DEPENDENCIES
   guard-sidekiq
   haml-rails
   mailgun_rails
+  nokogiri
   pg
   pry-nav
   pry-rails
@@ -329,3 +330,9 @@ DEPENDENCIES
   validate_url
   web-console (~> 2.0)
   whenever
+
+RUBY VERSION
+   ruby 2.1.5p273
+
+BUNDLED WITH
+   1.12.5

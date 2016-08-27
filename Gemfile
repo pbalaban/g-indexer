@@ -23,6 +23,7 @@ gem 'sinatra', '>= 1.3.0', require: nil ## Sidekiq monitor use sinatra
 gem 'validate_url'
 gem 'email_validator', require: 'email_validator/strict'
 gem 'PageRankr'
+gem 'nokogiri'
 
 gem 'whenever', require: false
 

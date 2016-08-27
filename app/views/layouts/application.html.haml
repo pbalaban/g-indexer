@@ -9,11 +9,11 @@
     .navbar.navbar-inverse.navbar-fixed-top
       .container
         .navbar-header
-          = link_to 'Domains', root_path, class: 'navbar-brand'
+          = link_to 'Backlinks', backlinks_path, class: 'navbar-brand'
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li
-              = link_to 'Emails', email_addresses_path
+            %li= link_to 'Domains', domains_path, class: 'navbar-brand'
+            %li= link_to 'Emails', email_addresses_path, class: 'navbar-brand'
 
     .container#main
       = yield
