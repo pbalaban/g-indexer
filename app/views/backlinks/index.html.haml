@@ -1,6 +1,6 @@
 .main-filter.panel.panel-primary
   .panel-heading
-    .title Enter new backlink
+    .title= @backlink.new_record? ? 'Enter new backlink' : 'Change Backlink'
   .panel-body
     = form_for @backlink, role: :form, class: :row do |f|
       .well.weel-sm.errors-container{ class: (:hidden unless @backlink.errors.any?) }
@@ -14,7 +14,7 @@
         = f.text_field :referent_domain, class: 'form-control', placeholder: 'Backlink domain'
 
       .form-group.col-xs-2
-        = f.submit 'Create', class: 'btn btn-info pull-right'
+        = f.submit @backlink.new_record? ? 'Create' : 'Update', class: 'btn btn-info pull-right'
 
 %table.table.table-striped.backlinks
   %thead
@@ -24,6 +24,7 @@
       %th Checked At
       %th Active?
       %th
+      %th
   %tbody
     - @backlinks.each do |backlink|
       %tr
@@ -32,6 +33,9 @@
         %td= backlink.formatted_checked_at
         %td
           %i.glyphicon{ class: backlink.active? ? :'glyphicon-ok' : :'glyphicon-remove' }
+        %td
+          = link_to edit_backlink_path(backlink) do
+            %i.glyphicon.glyphicon-pencil
         %td
           = link_to backlink_path(backlink), method: :delete, data: { confirm: 'Are you sure?' } do
             %i.glyphicon.glyphicon-trash

@@ -1,8 +1,22 @@
 class BacklinksController < ApplicationController
-  before_action :find_backlinks, only: :index
+  before_action :find_backlinks, only: [:index, :edit]
+  before_action :find_backlink, only: [:edit, :update]
 
   def index
     @backlink  = Backlink.new
+  end
+
+  def edit
+    render :index
+  end
+
+  def update
+    if @backlink.update(backlink_params)
+      redirect_to root_path
+    else
+      find_backlinks
+      render :index
+    end
   end
 
   def create
@@ -30,5 +44,9 @@ class BacklinksController < ApplicationController
 
   def find_backlinks
     @backlinks = Backlink.order(updated_at: :desc).load
+  end
+
+  def find_backlink
+    @backlink = Backlink.find(params[:id])
   end
 end

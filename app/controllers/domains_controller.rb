@@ -9,7 +9,7 @@ class DomainsController < ApplicationController
     @domain = Domain.new(domain_params)
 
     if @domain.save
-      redirect_to root_path
+      redirect_to domains_path
     else
       find_domains
       render :index
@@ -20,7 +20,7 @@ class DomainsController < ApplicationController
     @domain = Domain.find(params[:id])
     @domain.destroy
 
-    redirect_to root_path
+    redirect_to domains_path
   end
 
   private

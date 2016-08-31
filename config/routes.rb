@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :domains, only: [:index, :create, :destroy]
   resources :email_addresses, only: [:index, :create, :destroy]
-  resources :backlinks, only: [:index, :create, :destroy]
+  resources :backlinks, only: [:index, :create, :edit, :update, :destroy]
 
   root 'backlinks#index'
 end
