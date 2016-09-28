@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
 
 ruby '2.1.5'
 
@@ -11,9 +10,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'haml-rails'
 
-gem 'rails-assets-jquery'
-gem 'rails-assets-jquery-ujs'
-gem 'rails-assets-bootstrap'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery'
+  gem 'rails-assets-jquery-ujs'
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-tagsinput'
+end
 
 gem 'rails_config'
 gem 'exception_notification'
