@@ -1,8 +1,11 @@
 class Backlink < ActiveRecord::Base
   include Checkable
 
+  belongs_to :project
+
   validates :referrer_page, url: { allow_blank: true }, presence: true
   validates :referent_domain, presence: true
+  validates :project_id, presence: true
 
   after_save :send_notification
 

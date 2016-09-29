@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905062623) do
+ActiveRecord::Schema.define(version: 20160929005619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(version: 20160905062623) do
     t.datetime "checked_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "project_id"
   end
+
+  add_index "backlinks", ["project_id"], name: "index_backlinks_on_project_id", using: :btree
 
   create_table "domains", force: :cascade do |t|
     t.string   "url"
@@ -31,7 +34,10 @@ ActiveRecord::Schema.define(version: 20160905062623) do
     t.datetime "checked_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "project_id"
   end
+
+  add_index "domains", ["project_id"], name: "index_domains_on_project_id", using: :btree
 
   create_table "email_addresses", force: :cascade do |t|
     t.string   "email"

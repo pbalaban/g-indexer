@@ -3,7 +3,7 @@ class BacklinkMailer < ApplicationMailer
     @backlink = Backlink.find(backlink_id)
 
     mail(
-      to: EmailAddress.for_backlinks.pluck(:email),
+      to: @backlink.project.emails,
       subject: "Backlink for #{@backlink.referent_domain} is enabled"
     )
   end
@@ -12,7 +12,7 @@ class BacklinkMailer < ApplicationMailer
     @backlink = Backlink.find(backlink_id)
 
     mail(
-      to: EmailAddress.for_backlinks.pluck(:email),
+      to: @backlink.project.emails,
       subject: "Backlink for #{@backlink.referent_domain} is disabled"
     )
   end

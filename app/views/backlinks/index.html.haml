@@ -8,10 +8,12 @@
         %ul
           - @backlink.errors.full_messages.each do |message|
             %li= message
-      .form-group.col-xs-5
+      .form-group.col-xs-4
         = f.text_field :referrer_page, class: 'form-control', placeholder: 'Page where backlink live'
-      .form-group.col-xs-5
+      .form-group.col-xs-4
         = f.text_field :referent_domain, class: 'form-control', placeholder: 'Backlink domain'
+      .form-group.col-xs-2
+        = f.select :project_id, Project.for_select, { prompt: 'Choose project' }, { class: 'form-control' }
 
       .form-group.col-xs-2
         = f.submit @backlink.new_record? ? 'Create' : 'Update', class: 'btn btn-info pull-right'
@@ -21,6 +23,7 @@
     %tr
       %th Website URL
       %th Backlink domain
+      %th Project
       %th Checked At
       %th Active?
       %th
@@ -30,6 +33,7 @@
       %tr
         %td= link_to backlink.referrer_page, backlink.referrer_page
         %td= backlink.referent_domain
+        %td= backlink.project.title
         %td= backlink.formatted_checked_at
         %td
           %i.glyphicon{ class: backlink.active? ? :'glyphicon-ok' : :'glyphicon-remove' }

@@ -3,7 +3,10 @@ class Domain < ActiveRecord::Base
 
   include Checkable
 
+  belongs_to :project
+
   validates :url, url: { allow_blank: true }, presence: true, uniqueness: true
+  validates :project_id, presence: true
 
   after_save :send_notification
 

@@ -25,7 +25,7 @@ class DomainsController < ApplicationController
 
   private
   def domain_params
-    params.require(:domain).permit(:url, :indexed)
+    params.require(:domain).permit(:url, :indexed, :project_id)
   end
 
   def find_domains
