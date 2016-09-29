@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929005619) do
+ActiveRecord::Schema.define(version: 20160929011733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,14 +38,6 @@ ActiveRecord::Schema.define(version: 20160929005619) do
   end
 
   add_index "domains", ["project_id"], name: "index_domains_on_project_id", using: :btree
-
-  create_table "email_addresses", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.boolean  "send_google_index_change", default: true, null: false
-    t.boolean  "send_backlink_change",     default: true, null: false
-  end
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
