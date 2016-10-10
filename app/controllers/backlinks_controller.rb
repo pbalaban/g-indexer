@@ -39,7 +39,7 @@ class BacklinksController < ApplicationController
 
   private
   def backlink_params
-    params.require(:backlink).permit(:referrer_page, :referent_domain, :project_id)
+    params.require(:backlink).permit(:referrer_page, :referent_domain, :project_id, :expired_at)
   end
 
   def find_backlinks
